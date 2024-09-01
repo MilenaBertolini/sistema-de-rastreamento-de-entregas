@@ -51,4 +51,25 @@ public class PacoteService {
         Pacote pacote = pacoteRepository.findById(id).get();
         pacoteRepository.delete(pacote);
     }
+
+    public List<Pacote> getPacotePorStatus(String status) {
+
+        Iterable<Pacote> pacotesStatusIterable = pacoteRepository.findPacotesPorStatus(status);
+
+        List<Pacote> pacotesStatusList = new ArrayList<>();
+        pacotesStatusIterable.forEach(pacotesStatusList::add);
+
+        return pacotesStatusList;
+    }
+
+    public List<Pacote> getPacotePorDestinatario(String destinatario) {
+
+        Iterable<Pacote> pacotesDestinatarioIterable = pacoteRepository.findPacotesPorDestinatario(destinatario);
+
+        List<Pacote> pacotesDestinatarioList = new ArrayList<>();
+        pacotesDestinatarioIterable.forEach(pacotesDestinatarioList::add);
+
+        return pacotesDestinatarioList;
+    }
+
 }
